@@ -1,0 +1,15 @@
+name: ci-cd pipeline
+on: 
+	push: 	
+		branches:
+			-main
+jobs:
+	build:
+		run-on: ubuntu:latest
+		steps:
+			-name: checkout actions
+			uses: actions/checkout@v4
+			-name: build docker image
+			run: docker build -t my-imagess .
+			-name: show docker image
+			run : docker images
